@@ -18,8 +18,10 @@ imgur_key = os.getenv("IMAGURKEY")
 
 output = requests.get("https://goquotes-api.herokuapp.com/api/v1/all/quotes")
 objectlist = output.json()
-#yes
-#hiiiii meow
+# yes
+# hiiiii meow
+
+
 def album(parameter):
     r = requests.get(
         f"https://api.imgur.com/3/gallery/t/{parameter}/?client_id={imgur_key}")
@@ -32,7 +34,6 @@ def imageFromAlbum(album_id):
         f"https://api.imgur.com/3/album/{album_id}/images/?client_id={imgur_key}")
     json_data = r.json()
     return json_data
-    
 
 
 def getLink(parameter):
