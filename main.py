@@ -57,10 +57,22 @@ class MyClient(discord.Client):
         self.bg_task = self.loop.create_task(self.my_background_task())
 
     async def on_ready(self):
+        output = requests.get("https://goquotes-api.herokuapp.com/api/v1/all/quotes")
+        objectlist = output.json()
         print('Logged in as')
         print(self.user.name)
         print(self.user.id)
         print('------')
+
+    async def random_quote(self):
+    
+        if "quote" in message.content.lower():
+            
+
+            index = random.randint(0, 8261-1)
+            x = objectlist["quotes"][index]
+            ran_quote = x["text"] + " - " + x["author"]
+            await message.channel.send(ran_quote)
 
     async def on_message(self, message):
         if message.author == self.user.name:
